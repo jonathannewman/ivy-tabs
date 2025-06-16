@@ -24,11 +24,6 @@ let instanceCount = 0;
 export default class IvyTabsTabListComponent extends Component {
   registerWithTabsContainer = modifier(() => {
     this.args.tabsContainer.registerTabList(this);
-    // if none of the tabs are selected, try to select one
-    let selected = this.tabs.find((tab) => tab.isSelected);
-    if (!selected && this.tabs.length > 0) {
-      this.selectTab();
-    }
     return () => {
       this.args.tabsContainer.unregisterTabList(this);
     };
@@ -209,7 +204,7 @@ export default class IvyTabsTabListComponent extends Component {
   selectTab() {
     const selection = this.selection;
 
-    if (isNone(selection) || this.tabs.length === 1) {
+    if (isNone(selection) && this.tabs.length === 1) {
       this.selectTabByIndex(0);
     } else {
       this.selectTabByModel(selection);
