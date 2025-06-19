@@ -1,7 +1,7 @@
 import Application from '@ember/application';
 import Resolver from './resolver';
 import loadInitializers from 'ember-load-initializers';
-import config from 'dummy/config/environment';
+import config from 'test-app/config/environment';
 import { importSync, isDevelopingApp, macroCondition } from '@embroider/macros';
 
 if (macroCondition(isDevelopingApp())) {
